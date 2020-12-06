@@ -1,10 +1,10 @@
 class FightersController < ApplicationController
   before_action :set_fighter, only: [:show, :update, :destroy]
   before_action :authorized
-  
+
   # GET /fighters
   def index
-    @fighters = Fighter.find_by user: @user.id
+    @fighters = Fighter.where user: @user.id
 
     render json: @fighters
   end
@@ -17,7 +17,7 @@ class FightersController < ApplicationController
   # POST /fighters
   def create
     @fighter = Fighter.new(fighter_params)
-    @fighter.user = @user.id
+    @fighter.user = @user
 
     if @fighter.save
       render json: @fighter, status: :created, location: @fighter
