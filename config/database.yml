@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: boxer_production
-  username: boxer
-  password: <%= ENV['BOXER_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
